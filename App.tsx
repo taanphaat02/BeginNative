@@ -19,8 +19,7 @@ export default function App() {
         <TextInput
           multiline={true}
           style={styles.input}
-          onChangeTexgit status
-          t={(value) => setName(value)}
+          onChangeText={(value) => setName(value)}
         />
       </View>
 
