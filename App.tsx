@@ -1,37 +1,37 @@
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 export default function App() {
-  const [count, setCount] = useState(0);
-
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
+  const [students, setStudents] = useState([
+    { id: 1, name: "Nguyen Van A", age: 18 },
+    { id: 2, name: "Nguyen Van B", age: 20 },
+    { id: 3, name: "Nguyen Van C", age: 42 },
+    { id: 4, name: "Nguyen Van AB", age: 24 },
+    { id: 5, name: "Nguyen Van AC", age: 14 },
+    { id: 7, name: "Nguyen Van ABC", age: 12 },
+    { id: 8, name: "Nguyen Van BAC", age: 11 },
+    { id: 9, name: "Nguyen Van CBA", age: 20 },
+  ]);
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.text1}>Count = {count}</Text>
-        <Button title="increse" onPress={() => setCount(count + 1)} />
-      </View>
-
-      <View>
-        <Text style={styles.text1}>My name is: {name}</Text>
-        <TextInput
-          multiline={true}
-          style={styles.input}
-          onChangeText={(value) => setName(value)}
-        />
-      </View>
-
-      <View>
-        <Text style={styles.text1}>I am {age} year old</Text>
-        <TextInput
-          style={styles.input}
-          maxLength={2}
-          keyboardType="numeric"
-          onChangeText={(value) => setAge(+value)}
-        />
-      </View>
+      <Text style={styles.heading1}>ARRAY STUDENT</Text>
+      <ScrollView>
+        {students.map((item) => {
+          return (
+            <View>
+              <Text style={styles.layoutItem}>{item.name}</Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     </View>
   );
 }
@@ -40,19 +40,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingLeft: 30,
-    paddingRight: 30,
+    paddingHorizontal: 40,
+    paddingTop: 50,
+    paddingBottom: 50,
   },
-  text1: {
-    color: "red",
-    fontSize: 20,
-    padding: 10,
+  heading1: {
+    fontSize: 25,
+    color: "green",
+    textAlign: "center",
+    paddingBottom: 10,
   },
-  input: {
-    borderWidth: 1,
-    borderColor: "black",
-    padding: 8,
+  layoutItem: {
+    padding: 35,
+    backgroundColor: "lightsteelblue",
+    marginBottom: 15,
+    borderRadius: 5,
   },
 });
